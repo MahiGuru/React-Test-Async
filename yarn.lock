@@ -8181,6 +8181,14 @@ react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
 
+react-keycloak@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/react-keycloak/-/react-keycloak-6.0.0.tgz#f690271ea04f8bcfab0fea716217a573709d9e30"
+  integrity sha512-PYwIwNfD4mCsQqcP+f4GTL9A8Sk5sSUMwo6KNoUoGPHSM87xgd7FccTZZm0zPZ5yRq/XHuZ1RkaA4mav8RSBeQ==
+  dependencies:
+    hoist-non-react-statics "^3.3.0"
+    prop-types "^15.7.2"
+
 react-redux@^7.0.2:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.0.3.tgz#983c5a6de81cb1e696bd1c090ba826545f9170f1"

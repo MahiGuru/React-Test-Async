@@ -1,13 +1,14 @@
 import React, { Component } from 'react' 
 import { fetchPosts } from '../actions/PostsListActions';
-import {connect} from 'react-redux'; 
-import Keycloak from 'keycloak-js';
+import {connect} from 'react-redux';
 
 class Posts extends Component {
   constructor(props){
     super(props);
-    this.state = { keycloak: null, authenticated: false };
-  }
+    this.state = { keycloak: null, authenticated: false, name:null, email: null, id: null };
+    this.keycloak = null;
+    this.logout = this.logout.bind(this);
+  } 
   componentWillMount(){
     this.props.fetchPosts()
   } 
@@ -15,12 +16,10 @@ class Posts extends Component {
     if(newProps.newPost){
       this.props.posts.unshift(newProps.newPost);
     }
-  }
-  componentDidMount() {
-    const keycloak = Keycloak('../keycloak.json');
-    keycloak.init({onLoad: 'login-required'}).then(authenticated => {
-      this.setState({ keycloak: keycloak, authenticated: authenticated })
-    })
+  } 
+  logout(){
+    console.log("LOGOUT CLICKED");
+    this.keycloak.logout();
   }
   render() {
     const postData = this.props.posts.map((post) =>  (
@@ -29,25 +28,14 @@ class Posts extends Component {
         <p>{post.body}</p>
       </div>
       )
-    )
-
-    if(this.state.keycloak){
-      if(this.state.authenticated) {
-        return (
-          <div>
-              <div>This is keycloak served component </div>
-              <h1> POSTS</h1>
-              {postData}
-          </div>
-        )
-      }else{
-        return (<div> Unable to authenticate</div>)
-      }
-    }
-
+    ) 
     return (
-      <div> Initializing keycloak</div>
+      <div> 
+          <h1> POSTS</h1>
+          {postData}
+      </div>
     )
+      
   }
 }
 const mapStateToProps = state => ({

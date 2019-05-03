@@ -1,22 +1,16 @@
-import React, { Component } from 'react' 
+import React from 'react' 
+import { withKeycloak } from 'react-keycloak';
 
-class Login extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  };
-        this.loginBtnClick = this.loginBtnClickHandler.bind(this);
-    }
-    loginBtnClickHandler(){
-
-    }
-    render() {
-        return (
-            <React.Fragment>
-                <h1>Login</h1>
-                <button onClick={this.loginBtnClick}>LOGIN </button>
-            </React.Fragment>
-        );
-    }
-}
-
-export default Login;
+const LoginPage = ({ keycloak }) => {
+    // Here you can access all of keycloak methods and variables.
+    // See https://www.keycloak.org/docs/latest/securing_apps/index.html#javascript-adapter-reference
+    return (
+      <div>
+        <button type="button" onClick={() => keycloak.login()}>
+          Login
+        </button>
+      </div>
+    );
+  };
+  
+  export default withKeycloak(LoginPage);
